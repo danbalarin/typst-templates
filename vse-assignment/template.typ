@@ -1,8 +1,20 @@
+// The project function defines how your document looks.
+// It takes your content and some metadata and formats it.
+// Go ahead and customize it to your liking!
 #let project(title: "", authors: (), subtitle: "", place: "", date: "", body) = {
+  // Set the document's basic properties.
   set document(author: authors, title: title)
-  set text(font: "New Computer Modern", lang: "en")
+  set text(font: "New Computer Modern", lang: "cs", size: 12pt)
+  set page(
+    paper: "a4",
+    margin: (x: 3cm, y: 2.5cm),
+  )
+  show heading: it => block[
+    #set align(center)
+    #text(it.body)
+    #v(0.3em)
+  ]
   show math.equation: set text(weight: 400)
-
 
   align(center)[
     #block(text(weight: 500, 1.5em, "Vysoká škola ekonomická v Praze"))
@@ -56,6 +68,6 @@
 
   pagebreak()
   set page(numbering: "1", number-align: right)
-  set par(justify: true)
+  set par(justify: true, leading: 1em, first-line-indent: 1em)
   body
 }
